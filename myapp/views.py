@@ -18,10 +18,7 @@ class PostListCreateView(APIView):
 
     def post(self, request):
         serializer = PostSerializer(data=request.data)
-
-        # Check if the user is authenticated
         if request.user.is_authenticated:
-            # Assign the authenticated user to the post
             serializer.validated_data['author'] = request.user
 
         if serializer.is_valid():
@@ -47,12 +44,13 @@ class PostDetailView(APIView):
     def put(self, request, pk):
         post = self.get_object(pk)
         if post:
-            serializer = PostSerializer(post, data=request.data)
+            serializer = PostSerializer(post, data=request.data, exclude=['id'])
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({'detail': 'Not found.'}, status=status.HTTP_404_NOT_FOUND)
+
 
     def delete(self, request, pk):
         post = self.get_object(pk)

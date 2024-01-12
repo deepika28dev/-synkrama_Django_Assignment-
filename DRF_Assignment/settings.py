@@ -125,8 +125,8 @@ STATIC_URL = 'static/'
 EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587 #465#
-EMAIL_HOST_USER = "deepika28dev@gmail.com"
-EMAIL_HOST_PASSWORD = "199328october"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
 PASSWORD_RESET_TIMEOUT= 172800  # In hours 48
 
